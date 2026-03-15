@@ -33,20 +33,20 @@
     </section>
 
     <main id="app">
-        <section class="products">
-            <div class="card">
-                <h3>Poulet Entier</h3>
-                <p class="price">12.50€ / kg</p>
-                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
-            </div>
-            </section>
+     <section class="products">
+    <div class="card">
+        <h3>Poulet Entier</h3>
+        <p class="price">12.50€ / kg</p>
+        <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
+    </div>
+    <!-- Tu peux ajouter d'autres produits ici -->
+</section>
 
-        <aside class="cart">
-            <h2>🛒 Mon Panier</h2>
-            <ul id="cart-items"></ul>
-            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
-            <button style="width: 100%;" onclick="checkout()">Commander via WhatsApp</button>
-        </aside>
+<!-- ET après, fermer la section PUIS ouvrir l'aside -->
+<aside class="cart">
+    <h2>🛒 Mon Panier</h2>
+    <!-- ... reste du panier -->
+</aside>
     </main>
 
     <a href="https://wa.me/33773127625" class="whatsapp-float" target="_blank">
