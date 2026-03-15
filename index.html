@@ -20,12 +20,12 @@
             <div class="lifecycle-timeline">
                 <div class="timeline-item">
                     <div class="timeline-img-container">
-                        <img src="ton-image-poussin.jpg" class="timeline-img" alt="Poussins">
+                        <img src="poussins.jpg" class="timeline-img" alt="Poussins">
                     </div>
                     <div class="timeline-content">
                         <h3>1. Le Démarrage</h3>
                         <p>Des poussins élevés avec passion et des produits naturels.</p>
-                        <button onclick="commanderWhatsAppDirect('Poussins', 2)">Infos Poussins</button>
+                        <button onclick="commanderWhatsAppDirect('Infos Poussins', 0)">Infos Poussins</button>
                     </div>
                 </div>
             </div>
@@ -33,20 +33,77 @@
     </section>
 
     <main id="app">
-     <section class="products">
-    <div class="card">
-        <h3>Poulet Entier</h3>
-        <p class="price">12.50€ / kg</p>
-        <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
-    </div>
-    <!-- Tu peux ajouter d'autres produits ici -->
-</section>
+        <section class="products">
+            <div class="card">
+                <h3>Poulet Entier</h3>
+                <p class="price">12.50€ / kg</p>
+                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
+            </div>
+        </section>
 
-<!-- ET après, fermer la section PUIS ouvrir l'aside -->
-<aside class="cart">
-    <h2>🛒 Mon Panier</h2>
-    <!-- ... reste du panier -->
-</aside>
+        <aside class="cart">
+            <h2>🛒 Mon Panier</h2>
+            <ul id="cart-items"></ul>
+            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
+            <button style="width: 100%;" onclick="checkout()">Commander via WhatsApp</button>
+        </aside>
+    </main>
+
+    <a href="https://wa.me/33773127625" class="whatsapp-float" target="_blank">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioPoulet Direct - Timavie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>🐔 TIMAVIE - BioPoulet Direct</h1>
+        <p>Le goût de la ferme, directement chez vous</p>
+    </header>
+
+    <section class="lifecycle-section">
+        <div class="container">
+            <h2 class="section-title">Notre Cycle d'Élevage</h2>
+            <div class="lifecycle-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-img-container">
+                        <img src="poussins.jpg" class="timeline-img" alt="Poussins">
+                    </div>
+                    <div class="timeline-content">
+                        <h3>1. Le Démarrage</h3>
+                        <p>Des poussins élevés avec passion et des produits naturels.</p>
+                        <button onclick="commanderWhatsAppDirect('Infos Poussins', 0)">Infos Poussins</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="app">
+        <section class="products">
+            <div class="card">
+                <h3>Poulet Entier</h3>
+                <p class="price">12.50€ / kg</p>
+                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
+            </div>
+        </section>
+
+        <aside class="cart">
+            <h2>🛒 Mon Panier</h2>
+            <ul id="cart-items"></ul>
+            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
+            <button style="width: 100%;" onclick="checkout()">Commander via WhatsApp</button>
+        </aside>
     </main>
 
     <a href="https://wa.me/33773127625" class="whatsapp-float" target="_blank">
