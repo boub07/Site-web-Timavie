@@ -3,96 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioPoulet Direct - Timavie | Vente directe à la ferme</title>
+    <title>BioPoulet Direct - Timavie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1> BioPoulet Direct (Timavie)</h1>
-        <p>Des produits frais, de la ferme à votre assiette</p>
-        <img src="poulet(2).png" alt="Logo BioPoulet Direct - Poulet fermier" class="logo-img">
+        <h1> BioPoulet Direct</h1>
+        <p>De la ferme à votre assiette</p>
     </header>
 
     <main id="app">
-
         <section class="lifecycle-section">
             <div class="container">
-                <h2 class="section-title">Notre Engagement Qualité : De la Poussinière à Votre Table</h2>
-                <p class="section-subtitle">Découvrez comment nous élevons des poulets sains, vigoureux et délicieux, 100% à la ferme.</p>
-
+                <h2 class="section-title">Notre Cycle d'Élevage</h2>
+                
                 <div class="lifecycle-timeline">
-                    
                     <div class="timeline-item">
                         <div class="timeline-img-container">
-                            <img src="poussins.png" alt="Poussins de chair sous lampe Timavie" class="timeline-img">
+                            <img src="Gemini_Generated_Image_p0eywyp0eywyp0ey (2).jpg" alt="Poussins" class="timeline-img">
                         </div>
                         <div class="timeline-content">
-                            <span class="step-number">1</span>
-                            <h3>Le Démarrage Choyé</h3>
-                            <p>Tout commence dans notre poussinière biosecurisée. Nos poussins reçoivent une chaleur optimale et un aliment de démarrage premium pour développer leur immunité naturelle dès le premier jour. Pas de stress, juste du soin.</p>
+                            <h3>1. Le Démarrage</h3>
+                            <p>Nos poussins sont élevés au chaud dès le premier jour avec un soin total.</p>
                         </div>
                     </div>
 
                     <div class="timeline-item invert">
-                        <div class="timeline-img-container">
-                            <img src="poussins(2).png" alt="Poule et poussins africains Timavie" class="timeline-img">
-                        </div>
                         <div class="timeline-content">
-                            <span class="step-number">2</span>
-                            <h3>La Croissance Saine</h3>
-                            <p>Dans nos poulaillers semi-ouverts adaptés au climat, nos poulets profitent de l'air frais et de l'espace. Nous privilégions une croissance naturelle, sans hormones ni accélérateurs, avec un suivi sanitaire rigoureux.</p>
+                            <h3>2. La Commande</h3>
+                            <p>Prêt pour votre cuisine ? Passez commande en un clic !</p>
+                            <button class="cta-button" onclick="commanderWhatsAppDirect('Poulet Fermier', 10)">Commander un Poulet !</button>
                         </div>
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-img-container">
-                            <img src="poulet.png" alt="Poulets de chair vigoureux prêts pour la vente" class="timeline-img">
-                        </div>
-                        <div class="timeline-content">
-                            <span class="step-number">3</span>
-                            <h3>La Maturité Vigoureuse</h3>
-                            <p>Une fois vigoureux et bien en chair, nos poulets atteignent leur maturité optimale. Ils sont sélectionnés pour leur conformation et leur santé parfaite, vous garantissant une viande ferme et savoureuse.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item invert">
-                        <div class="timeline-img-container">
-                            <img src="Gemini_Generated_Image_p0eywyp0eywyp0ey.jpg" alt="Ferme Timavie authentique" class="timeline-img">
-                        </div>
-                        <div class="timeline-content">
-                            <span class="step-number">4</span>
-                            <h3>Votre Commande Fraîche</h3>
-                            <p>C'est le moment ! Nous préparons votre poulet à la commande, directement à la ferme, pour une fraîcheur inégalée. Commandez maintenant et savourez la différence.</p>
-                            <button class="cta-button" onclick="commanderWhatsAppDirect('Poulet Entier Fermier', 10)">Commander un Poulet !</button>
-                        </div>
-                    </div>
-
-                </div> </div> </section>
-
-        <section class="shop-section">
-            <h2 class="section-title">Nos Produits Fermiers</h2>
-            <div class="products-grid">
-                <div class="card">
-                    <h3>Poulet Entier</h3>
-                    <p class="price">12.50€ / kg</p>
-                    <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
-                </div>
-                <div class="card">
-                    <h3>Filets (x4)</h3>
-                    <p class="price">15.00€</p>
-                    <button onclick="addToCart('Filets (x4)', 15.00)">Ajouter au panier</button>
                 </div>
             </div>
         </section>
 
-        <aside class="cart">
-            <h2>Votre Panier</h2>
-            <ul id="cart-items"></ul>
-            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
-            <button id="checkout" onclick="checkout()">Commander via WhatsApp</button>
-        </aside>
-
+        <section class="products">
+            <div class="card">
+                <h3>Poulet Entier</h3>
+                <p class="price">12.50€ / kg</p>
+                <button onclick="commanderWhatsAppDirect('Poulet Entier', 12.50)">Acheter maintenant</button>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
