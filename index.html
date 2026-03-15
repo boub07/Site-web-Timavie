@@ -3,113 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioPoulet Direct - Timavie</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>BioPoulet Timavie - Qualité Fermière Directe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .carrefour-blue { background-color: #0066cc; }
+        .carrefour-blue-text { color: #0066cc; }
+        .promo-banner { background-color: #fff1f1; border-bottom: 1px solid #ffcccc; }
+        
+        .product-card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            transition: box-shadow 0.2s;
+        }
+        
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nutri-score {
+            width: 40px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>🐔 TIMAVIE - BioPoulet Direct</h1>
-        <p>Le goût de la ferme, directement chez vous</p>
-    </header>
+    <!-- 1. TOP NAVIGATION (Style Carrefour) -->
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="text-2xl font-bold carrefour-blue-text flex items-center">
+                        <span class="mr-1">🐔</span> TIMAVIE
+                    </div>
+                </div>
 
-    <section class="lifecycle-section">
-        <div class="container">
-            <h2 class="section-title">Notre Cycle d'Élevage</h2>
-            <div class="lifecycle-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-img-container">
-                        <img src="poussins.jpg" class="timeline-img" alt="Poussins">
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Rechercher un produit, une étape d'élevage..." class="w-full border rounded-md py-2 px-4 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button class="absolute right-3 top-2.5 carrefour-blue-text">
+                            🔍
+                        </button>
                     </div>
-                    <div class="timeline-content">
-                        <h3>1. Le Démarrage</h3>
-                        <p>Des poussins élevés avec passion et des produits naturels.</p>
-                        <button onclick="commanderWhatsAppDirect('Infos Poussins', 0)">Infos Poussins</button>
-                    </div>
+                </div>
+
+                <!-- User Actions -->
+                <div class="flex items-center gap-6 text-sm font-semibold text-gray-700">
+                    <a href="#" class="hidden lg:block hover:text-blue-600">📍 Ma Ferme</a>
+                    <a href="#" class="hover:text-blue-600">👤 Compte</a>
+                    <button onclick="toggleCart()" class="flex items-center gap-2 carrefour-blue-text border-2 border-blue-600 rounded-full px-4 py-1.5 hover:bg-blue-50 transition">
+                        🛒 <span id="cart-count">0</span>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <main id="app">
-        <section class="products">
-            <div class="card">
-                <h3>Poulet Entier</h3>
-                <p class="price">12.50€ / kg</p>
-                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
-            </div>
-        </section>
+    <!-- 2. PROMO BANNER -->
+    <div class="promo-banner py-3 text-center text-sm md:text-base">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-2">
+            <span class="font-bold text-red-600 text-xl">OFFRE DE BIENVENUE</span>
+            <span class="font-medium">-20% sur votre première commande avec le code <strong class="bg-white px-2 py-1 rounded border border-dashed border-red-500 ml-1">FERME20</strong></span>
+        </div>
+    </div>
 
-        <aside class="cart">
-            <h2>🛒 Mon Panier</h2>
-            <ul id="cart-items"></ul>
-            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
-            <button style="width: 100%;" onclick="checkout()">Commander via WhatsApp</button>
-        </aside>
-    </main>
-
-    <a href="https://wa.me/33773127625" class="whatsapp-float" target="_blank">
-        <i class="fa fa-whatsapp"></i>
-    </a>
-
-    <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioPoulet Direct - Timavie</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-</head>
-<body>
-
-    <header>
-        <h1>🐔 TIMAVIE - BioPoulet Direct</h1>
-        <p>Le goût de la ferme, directement chez vous</p>
-    </header>
-
-    <section class="lifecycle-section">
-        <div class="container">
-            <h2 class="section-title">Notre Cycle d'Élevage</h2>
-            <div class="lifecycle-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-img-container">
-                        <img src="poussins.jpg" class="timeline-img" alt="Poussins">
-                    </div>
-                    <div class="timeline-content">
-                        <h3>1. Le Démarrage</h3>
-                        <p>Des poussins élevés avec passion et des produits naturels.</p>
-                        <button onclick="commanderWhatsAppDirect('Infos Poussins', 0)">Infos Poussins</button>
-                    </div>
+    <!-- 3. HERO SECTION / BREADCRUMBS -->
+    <div class="max-w-7xl mx-auto px-4 py-4">
+        <nav class="text-xs text-gray-500 mb-4">
+            Accueil > Nos Produits > <span class="text-black font-bold">Poulets Fermiers</span>
+        </nav>
+        
+        <div class="relative h-48 md:h-64 rounded-xl overflow-hidden mb-8">
+            <img src="Gemini_Generated_Image_p0eywyp0eywyp0ey.jpg" alt="Ferme Timavie" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center px-8">
+                <h2 class="text-white text-4xl font-bold mb-2">Nos Poulets</h2>
+                <div class="flex gap-4 text-white text-sm">
+                    <span class="border-b-2 border-white pb-1">Cycle de Vie</span>
+                    <span class="opacity-70 hover:opacity-100 cursor-pointer">Prêts à cuire</span>
+                    <span class="opacity-70 hover:opacity-100 cursor-pointer">Pièces découpées</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <main id="app">
-        <section class="products">
-            <div class="card">
-                <h3>Poulet Entier</h3>
-                <p class="price">12.50€ / kg</p>
-                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
+    <main class="max-w-7xl mx-auto px-4">
+        
+        <!-- 4. FILTERS -->
+        <div class="flex gap-3 mb-6 overflow-x-auto pb-2">
+            <button class="border rounded-full px-5 py-1.5 bg-white font-bold text-sm shadow-sm">Filtres & Tri</button>
+            <button class="border rounded-full px-5 py-1.5 bg-white text-sm hover:bg-gray-50">Élevage Local 🌍</button>
+            <button class="border rounded-full px-5 py-1.5 bg-white text-sm hover:bg-gray-50">Sans Hormones 🌱</button>
+            <button class="border rounded-full px-5 py-1.5 bg-white text-sm hover:bg-gray-50">Halal ✅</button>
+        </div>
+
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="text-gray-500">4 étapes de qualité • 2 produits disponibles</h3>
+        </div>
+
+        <!-- 5. PRODUCT GRID (Le Cycle de Vie) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            
+            <!-- Étape 1 -->
+            <div class="product-card rounded-lg overflow-hidden flex flex-col h-full">
+                <div class="relative">
+                    <img src="Gemini_Generated_Image_p0eywyp0eywyp0ey (2).jpg" alt="Poussins" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 left-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">ÉTAPE 1</span>
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                    <h4 class="font-bold text-lg mb-1">Le Démarrage Choyé</h4>
+                    <p class="text-sm text-gray-500 mb-4">Poussins élevés sous lampe avec un suivi nutritionnel strict.</p>
+                    <div class="mt-auto flex justify-between items-end">
+                        <div class="text-xs text-gray-400">Garantie Qualité Timavie</div>
+                        <button class="text-blue-600 font-bold text-sm">En savoir plus ></button>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <aside class="cart">
-            <h2>🛒 Mon Panier</h2>
-            <ul id="cart-items"></ul>
-            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
-            <button style="width: 100%;" onclick="checkout()">Commander via WhatsApp</button>
-        </aside>
+            <!-- Étape 2 -->
+            <div class="product-card rounded-lg overflow-hidden flex flex-col h-full">
+                <div class="relative">
+                    <img src="Gemini_Generated_Image_p0eywyp0eywyp0ey (1).jpg" alt="Croissance" class="w-full h-48 object-cover">
+                    <span class="absolute top-2 left-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">ÉTAPE 2</span>
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                    <h4 class="font-bold text-lg mb-1">Croissance Naturelle</h4>
+                    <p class="text-sm text-gray-500 mb-4">Élevage en plein air, sans hormones, avec céréales locales.</p>
+                    <div class="mt-auto flex justify-between items-end">
+                        <div class="text-xs text-gray-400">Plein air africain</div>
+                        <button class="text-blue-600 font-bold text-sm">En savoir plus ></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT FINAL 1 (Style Carrefour) -->
+            <div class="product-card rounded-lg overflow-hidden flex flex-col h-full">
+                <div class="relative p-4">
+                    <img src="poulet.png" alt="Poulet Entier" class="w-full h-40 object-contain mx-auto">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <div class="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">VU EN CATALOGUE</div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Nutri-score-A.svg" alt="Nutri A" class="nutri-score">
+                    </div>
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                    <h4 class="font-bold text-sm text-gray-800 mb-1 leading-tight">Poulet de chair entier - Élevé en plein air à la ferme</h4>
+                    <p class="text-xs text-gray-400 mb-4">Vendu à l'unité (environ 1.5kg)</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                        <div>
+                            <span class="text-2xl font-black">12</span><span class="text-sm font-bold">,50€</span>
+                            <div class="text-[10px] text-gray-400">8,33 € / KG</div>
+                        </div>
+                        <button onclick="addToCart('Poulet Entier', 12.50)" class="carrefour-blue text-white font-bold py-2 px-6 rounded-md flex items-center gap-2 hover:bg-blue-700 transition">
+                            <span class="text-xl">+</span> Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUIT FINAL 2 (Style Carrefour) -->
+            <div class="product-card rounded-lg overflow-hidden flex flex-col h-full">
+                <div class="relative p-4">
+                    <img src="poulet(2).png" alt="Filets" class="w-full h-40 object-contain mx-auto">
+                    <div class="absolute top-2 left-2 flex flex-col gap-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Nutri-score-A.svg" alt="Nutri A" class="nutri-score">
+                    </div>
+                </div>
+                <div class="p-4 flex-1 flex flex-col">
+                    <h4 class="font-bold text-sm text-gray-800 mb-1 leading-tight">Filets de poulet fermier (x4) - Origine Timavie</h4>
+                    <p class="text-xs text-gray-400 mb-4">Le pack de 400g environ</p>
+                    
+                    <div class="mt-auto flex justify-between items-center">
+                        <div>
+                            <span class="text-2xl font-black">15</span><span class="text-sm font-bold">,00€</span>
+                            <div class="text-[10px] text-gray-400">37,50 € / KG</div>
+                        </div>
+                        <button onclick="addToCart('Pack Filets', 15.00)" class="carrefour-blue text-white font-bold py-2 px-6 rounded-md flex items-center gap-2 hover:bg-blue-700 transition">
+                            <span class="text-xl">+</span> Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <a href="https://wa.me/33773127625" class="whatsapp-float" target="_blank">
-        <i class="fa fa-whatsapp"></i>
-    </a>
+    <!-- SHOPPING CART (SIDEBAR) -->
+    <div id="cart-sidebar" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-2xl z-[60] transform translate-x-full transition-transform duration-300">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold">Mon Panier</h2>
+                <button onclick="toggleCart()" class="text-2xl text-gray-400">&times;</button>
+            </div>
+            
+            <div id="cart-items" class="flex-1 overflow-y-auto space-y-4">
+                <!-- Items injectés par JS -->
+                <p class="text-gray-400 text-center py-10">Votre panier est vide...</p>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="border-t pt-4">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total</span>
+                    <span id="total-price">0,00 €</span>
+                </div>
+                <button onclick="checkout()" class="w-full carrefour-blue text-white py-4 rounded-lg font-bold hover:bg-blue-700 transition">
+                    Valider ma commande sur WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT JS -->
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateUI();
+            
+            // Ouvrir le panier automatiquement pour le feedback
+            document.getElementById('cart-sidebar').classList.remove('translate-x-full');
+        }
+
+        function updateUI() {
+            const list = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total-price');
+            const cartCount = document.getElementById('cart-count');
+            
+            if(cart.length === 0) {
+                list.innerHTML = '<p class="text-gray-400 text-center py-10">Votre panier est vide...</p>';
+            } else {
+                list.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = "flex justify-between items-center border-b pb-2";
+                    div.innerHTML = `
+                        <div class="flex flex-col">
+                            <span class="font-bold text-sm">${item.name}</span>
+                            <span class="text-xs text-blue-600">Quantité : 1</span>
+                        </div>
+                        <span class="font-bold">${item.price.toFixed(2)} €</span>
+                    `;
+                    list.appendChild(div);
+                });
+            }
+            
+            totalDisplay.textContent = `${total.toFixed(2).replace('.', ',')} €`;
+            cartCount.textContent = cart.length;
+        }
+
+        function checkout() {
+            if(cart.length === 0) return;
+            
+            const numero = "33773127625"; 
+            let detail = "";
+            cart.forEach(item => {
+                detail += `- ${item.name} (${item.price}€)\n`;
+            });
+
+            const message = `Bonjour Timavie ! Commande en ligne :\n\n${detail}\nTOTAL : ${total.toFixed(2)}€\n\nMerci !`;
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
