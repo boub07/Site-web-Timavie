@@ -33,22 +33,7 @@ function addToCart(name, price) {
     updateUI();
 }
 
-// --- FONCTION GÉRANT : ENREGISTRER LE PRIX ---
-function savePrices() {
-    const inputPrix = document.getElementById('new-price-entier').value;
-    if (inputPrix > 0) {
-        localStorage.setItem('prixPoulet', inputPrix); // Sauvegarde dans le navigateur
-        prixActuelEntier = parseFloat(inputPrix);
-        updatePriceDisplay();
-        alert("✅ Prix mis à jour pour vos prochains clients !");
-    }
-}
 
-// Met à jour le texte sur la fiche produit
-function updatePriceDisplay() {
-    const display = document.getElementById('display-price-entier');
-    if(display) display.textContent = prixActuelEntier.toFixed(2).replace('.', ',');
-}
 
 // --- GESTION DU PANIER ---
 function toggleCart() {
