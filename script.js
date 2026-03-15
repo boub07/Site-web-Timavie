@@ -1,14 +1,12 @@
 let cart = [];
 let total = 0;
 
-// Ajouter un produit au panier
 function addToCart(name, price) {
     cart.push({name, price});
     total += price;
     updateUI();
 }
 
-// Mettre à jour l'affichage
 function updateUI() {
     const list = document.getElementById('cart-items');
     const totalDisplay = document.getElementById('total-price');
@@ -26,7 +24,6 @@ function updateUI() {
     totalDisplay.textContent = total.toFixed(2);
 }
 
-// Commander tout le panier
 function checkout() {
     if(cart.length === 0) return alert("Votre panier est vide !");
     
@@ -40,9 +37,8 @@ function checkout() {
     window.open(`https://wa.me/${numero}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// Commande directe (Timeline)
 function commanderWhatsAppDirect(productName, price) {
     const numero = "33773127625"; 
-    const message = `Bonjour Timavie, je souhaite commander en direct : ${productName} (${price}€). Merci !`;
+    const message = `Bonjour Timavie, je souhaite des informations sur : ${productName}. Merci !`;
     window.open(`https://wa.me/${numero}?text=${encodeURIComponent(message)}`, '_blank');
 }
