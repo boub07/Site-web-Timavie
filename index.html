@@ -1,3 +1,5 @@
+
+
 <section class="lifecycle-section">
     <div class="container">
         <h2 class="section-title">Notre Engagement Qualité : De la Poussinière à Votre Table</h2>
@@ -50,3 +52,43 @@
             </div>
 
         </div> </div> </section>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioPoulet - Vente directe à la ferme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> BioPoulet Direct</h1>
+        <p>De la ferme à votre assiette</p>
+    </header>
+
+    <main id="app">
+        <section class="products">
+            <div class="card">
+                <h3>Poulet Entier</h3>
+                <p class="price">12.50€ / kg</p>
+                <button onclick="addToCart('Poulet Entier', 12.50)">Ajouter au panier</button>
+            </div>
+            <div class="card">
+                <h3>Filets (x4)</h3>
+                <p class="price">15.00€</p>
+                <button onclick="addToCart('Filets (x4)', 15.00)">Ajouter au panier</button>
+            </div>
+        </section>
+
+        <aside class="cart">
+            <h2>Votre Panier</h2>
+            <ul id="cart-items"></ul>
+            <p><strong>Total: <span id="total-price">0</span>€</strong></p>
+            <button id="checkout" onclick="checkout()">Commander via WhatsApp</button>
+        </aside>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
