@@ -1,257 +1,217 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: #f9f9f1;
-    color: #333;
-}
-
-header {
-    background-color: #2d5a27;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-}
-
-#app {
-    display: flex;
-    padding: 20px;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    flex: 2;
-}
-
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.price {
-    color: #e67e22;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.cart {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    flex: 1;
-    min-width: 250px;
-    border: 2px solid #2d5a27;
-}
-
-button {
-    background-color: #2d5a27;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #3e7a35;
-}
-/* === STYLE DE LA SECTION CYCLE DE VIE (TIMELINE) === */
-
+/* ==========================================
+   1. VARIABLES & RESET
+   ========================================== */
 :root {
-    --primary-color: #2d5a27; /* Vert ferme */
-    --accent-color: #e67e22; /* Orange terreux (prix/CTA) */
-    --bg-light: #f9f9f1; /* Fond crème très clair */
-    --text-dark: #333;
+    --primary-color: #2d5a27;   /* Vert Ferme */
+    --primary-hover: #3e7a35;
+    --accent-color: #e67e22;    /* Orange Terreux */
+    --accent-hover: #d35400;
+    --bg-light: #f9f9f1;        /* Crème */
     --white: #ffffff;
+    --text-dark: #333333;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.lifecycle-section {
-    padding: 60px 20px;
-    background-color: var(--white);
-    font-family: 'Segoe UI', sans-serif;
+* {
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Texte plus net */
+}
+
+/* ==========================================
+   2. HEADER & TITRES
+   ========================================== */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem 1rem;
+    box-shadow: var(--shadow);
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    letter-spacing: 1px;
 }
 
 .section-title {
     text-align: center;
     color: var(--primary-color);
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2.4rem;
+    margin: 40px 0 10px;
+    font-weight: 700;
 }
 
 .section-subtitle {
     text-align: center;
-    color: var(--text-dark);
-    font-size: 1.2rem;
+    color: #666;
+    font-size: 1.1rem;
     max-width: 600px;
-    margin: 0 auto 50px auto;
-    opacity: 0.8;
+    margin: 0 auto 50px;
 }
 
-/* Structure de la Timeline */
+/* ==========================================
+   3. BOUTIQUE & PANIER (Layout Flex)
+   ========================================== */
+#app {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    flex: 2;
+}
+
+.card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.price {
+    color: var(--accent-color);
+    font-weight: 800;
+    font-size: 1.4rem;
+    margin: 15px 0;
+}
+
+.cart {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    flex: 1;
+    min-width: 300px;
+    border: 2px solid var(--primary-color);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+/* ==========================================
+   4. TIMELINE (Cycle de Vie)
+   ========================================== */
+.lifecycle-section {
+    padding: 80px 20px;
+    background-color: var(--white);
+}
+
 .lifecycle-timeline {
     position: relative;
-    padding: 20px 0;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* La ligne centrale */
 .lifecycle-timeline::after {
     content: '';
     position: absolute;
     width: 4px;
     background-color: var(--primary-color);
-    top: 0;
-    bottom: 0;
-    left: 50%;
+    top: 0; bottom: 0; left: 50%;
     margin-left: -2px;
-    border-radius: 2px;
 }
 
-/* Élément de la Timeline */
 .timeline-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 50px;
-    position: relative;
+    margin-bottom: 80px;
     width: 100%;
 }
 
-/* Inverser gauche/droite pour l'alternance */
-.timeline-item.invert {
-    flex-direction: row-reverse;
-}
+.timeline-item.invert { flex-direction: row-reverse; }
 
-/* Conteneur de l'image (prend la moitié) */
-.timeline-img-container {
-    width: 45%;
-    display: flex;
-    justify-content: center;
-}
+.timeline-img-container { width: 45%; }
 
 .timeline-img {
     width: 100%;
-    height: 300px; /* Hauteur fixe pour l'harmonie */
-    object-fit: cover; /* Recadre proprement */
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.timeline-img:hover {
-    transform: scale(1.03); /* Petit effet au survol */
-}
-
-/* Conteneur du texte (prend l'autre moitié) */
 .timeline-content {
     width: 45%;
     padding: 30px;
     background-color: var(--bg-light);
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 20px;
     position: relative;
 }
 
-/* Le numéro de l'étape */
 .step-number {
     position: absolute;
-    top: -15px;
-    left: -15px;
+    top: -20px; left: -20px;
     background-color: var(--accent-color);
     color: var(--white);
-    width: 40px;
-    height: 40px;
+    width: 45px; height: 45px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex; justify-content: center; align-items: center;
+    font-weight: 900;
 }
 
-.timeline-item.invert .step-number {
-    left: auto;
-    right: -15px; /* Ajuster pour la version inversée */
-}
+.timeline-item.invert .step-number { left: auto; right: -20px; }
 
-.timeline-content h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-    font-size: 1.5rem;
-}
-
-.timeline-content p {
-    color: var(--text-dark);
-    line-height: 1.6;
-    margin-bottom: 0;
-}
-
-/* Bouton CTA spécifique dans la timeline */
-.cta-button {
-    background-color: var(--accent-color);
+/* ==========================================
+   5. BOUTONS
+   ========================================== */
+button {
+    background-color: var(--primary-color);
     color: var(--white);
     border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    border-radius: 50px; /* Boutons arrondis plus modernes */
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.cta-button {
+    background-color: var(--accent-color);
     margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.4);
 }
 
 .cta-button:hover {
-    background-color: #d35400; /* Orange plus foncé */
-    transform: translateY(-2px);
+    background-color: var(--accent-hover);
 }
 
-/* === RESPONSIVE DESIGN (Pour Mobile) === */
+/* ==========================================
+   6. RESPONSIVE
+   ========================================== */
 @media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .lifecycle-timeline::after {
-        left: 20px; /* Déplacer la ligne à gauche */
-    }
-
+    .lifecycle-timeline::after { left: 20px; }
     .timeline-item, .timeline-item.invert {
-        flex-direction: column; /* Tout mettre en colonne */
-        align-items: flex-start;
-        padding-left: 50px; /* Laisser de l'espace pour la ligne */
+        flex-direction: column;
+        padding-left: 50px;
     }
-
-    .timeline-img-container, .timeline-content {
-        width: 100%; /* Prendre toute la largeur */
-    }
-
-    .timeline-img-container {
-        margin-bottom: 20px;
-    }
-
-    .timeline-img {
-        height: 200px; /* Plus petit sur mobile */
-    }
-
-    .step-number {
-        left: -40px; /* Centrer sur la ligne */
-        top: 20px;
-    }
-
-    .timeline-item.invert .step-number {
-        right: auto;
-        left: -40px;
-    }
+    .timeline-img-container, .timeline-content { width: 100%; }
+    .step-number { left: -45px !important; top: 10px; }
+    h1 { font-size: 2rem; }
 }
