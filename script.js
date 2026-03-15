@@ -2,15 +2,36 @@
 let cart = [];
 let total = 0;
 
-// On récupère le prix enregistré dans le navigateur ou 12.50 par défaut
-let prixActuelEntier = localStorage.getItem('prixPoulet') 
-    ? parseFloat(localStorage.getItem('prixPoulet')) 
-    : 12.50;
+// On récupère le prix enregistré, ou on met 12.50 par défaut
+let prixActuelEntier = localStorage.getItem('prixPoulet') ? parseFloat(localStorage.getItem('prixPoulet')) : 12.50;
 
-// Au chargement, on met à jour l'affichage avec le prix stocké
-window.onload = function() {
+// On affiche le bon prix dès le chargement de la page
+document.addEventListener("DOMContentLoaded", function() {
     updatePriceDisplay();
-};
+});
+
+function updatePriceDisplay() {
+    // Met à jour le texte du prix sur la carte du produit
+    const display = document.querySelector('.price');
+    if(display) display.textContent = prixActuelEntier.toFixed(2) + "€ / kg";
+}
+
+function savePrices() {
+    const nouveauPrix = document.getElementById('new-price-entier').value;
+    localStorage.setItem('prixPoulet', nouveauPrix); // On enregistre dans le navigateur
+    prixActuelEntier = parseFloat(nouveauPrix);
+    updatePriceDisplay();
+    alert("✅ Prix mis à jour avec succès !");
+}
+
+// Modifie ta fonction addToCart pour utiliser la variable
+function addToCart(name, price) {
+    // Si c'est un poulet entier, on utilise le prix du gérant
+    let prixFinal = (name === 'Poulet Entier') ? prixActuelEntier : price;
+    cart.push({name: name, price: prixFinal});
+    total += prixFinal;
+    updateUI();
+}
 
 // --- FONCTION GÉRANT : ENREGISTRER LE PRIX ---
 function savePrices() {
